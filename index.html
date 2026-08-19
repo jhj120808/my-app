@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="반도체 공정기술 직무 지원 포트폴리오" />
+  <title>해진 | Semiconductor Process Engineer Portfolio</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-soft:#0b1828;
+      --card:#0f2034;
+      --card-2:#122942;
+      --text:#edf5ff;
+      --muted:#9db0c6;
+      --line:rgba(255,255,255,.10);
+      --accent:#64d6ff;
+      --accent-2:#7d8cff;
+      --good:#8df0bd;
+      --shadow:0 20px 60px rgba(0,0,0,.28);
+      --radius:22px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(100,214,255,.12), transparent 27%),
+        radial-gradient(circle at 90% 12%, rgba(125,140,255,.12), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #081522 45%, #07111f 100%);
+      color:var(--text);
+      font-family:Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      line-height:1.65;
+      letter-spacing:-.02em;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+
+    .wrap{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+
+    .nav{
+      position:sticky; top:0; z-index:100;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      min-height:68px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      font-weight:800;
+      letter-spacing:.01em;
+      display:flex; align-items:center; gap:10px;
+    }
+    .brand-mark{
+      width:10px; height:10px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 22px rgba(100,214,255,.9);
+    }
+    .nav-links{display:flex; gap:20px; color:var(--muted); font-size:14px}
+    .nav-links a:hover{color:var(--text)}
+
+    .hero{
+      min-height:calc(100vh - 68px);
+      display:grid;
+      grid-template-columns:1.18fr .82fr;
+      align-items:center;
+      gap:56px;
+      padding:84px 0 76px;
+    }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:9px;
+      padding:8px 12px;
+      border:1px solid rgba(100,214,255,.22);
+      background:rgba(100,214,255,.07);
+      color:#bcecff;
+      border-radius:999px;
+      font-size:13px; font-weight:700;
+    }
+    h1{
+      font-size:clamp(44px, 7vw, 82px);
+      line-height:1.04;
+      margin:22px 0 22px;
+      letter-spacing:-.055em;
+    }
+    .gradient{
+      background:linear-gradient(90deg, #eaf8ff 0%, #64d6ff 45%, #8e9cff 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      max-width:720px;
+      font-size:19px;
+      color:#b9c8d8;
+      margin:0 0 30px;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:13px 17px;
+      border-radius:13px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .btn.primary{
+      color:#05101b;
+      background:linear-gradient(135deg, var(--accent), #9ee9ff);
+      border-color:transparent;
+      font-weight:800;
+    }
+    .btn:hover{transform:translateY(-2px)}
+
+    .wafer-card{
+      position:relative;
+      min-height:420px;
+      border:1px solid var(--line);
+      border-radius:32px;
+      background:linear-gradient(145deg, rgba(18,41,66,.92), rgba(9,24,40,.88));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+    .wafer{
+      width:min(78%, 350px);
+      aspect-ratio:1;
+      border-radius:50%;
+      position:relative;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        radial-gradient(circle at 35% 30%, rgba(100,214,255,.30), transparent 28%),
+        linear-gradient(145deg, #152f4d, #0a1828);
+      background-size:28px 28px, 28px 28px, auto, auto;
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow:inset -30px -30px 70px rgba(0,0,0,.35), 0 30px 80px rgba(0,0,0,.35);
+    }
+    .wafer:after{
+      content:"";
+      position:absolute;
+      width:42px; height:10px;
+      background:var(--bg-soft);
+      bottom:-2px; left:50%;
+      transform:translateX(-50%);
+      border-radius:10px 10px 0 0;
+    }
+    .wafer-label{
+      position:absolute; left:24px; bottom:22px; right:24px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:#a8bfd5; font-size:12px;
+    }
+
+    section{padding:86px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:30px; margin-bottom:34px;
+    }
+    .section-kicker{
+      color:var(--accent); font-size:13px; font-weight:800;
+      text-transform:uppercase; letter-spacing:.14em;
+    }
+    h2{
+      font-size:clamp(30px, 4.4vw, 50px);
+      line-height:1.12;
+      margin:8px 0 0;
+      letter-spacing:-.04em;
+    }
+    .section-note{
+      max-width:510px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(145deg, rgba(15,32,52,.92), rgba(11,24,40,.92));
+      padding:26px;
+      box-shadow:0 15px 44px rgba(0,0,0,.16);
+    }
+    .metric{
+      font-size:33px; font-weight:900; letter-spacing:-.05em;
+      margin-bottom:7px;
+    }
+    .metric small{font-size:14px; color:var(--muted); font-weight:600}
+    .card h3{margin:0 0 8px; font-size:20px}
+    .card p{margin:0; color:var(--muted)}
+
+    .fit-table{
+      display:grid;
+      grid-template-columns:1fr 1.35fr;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(15,32,52,.72);
+    }
+    .fit-row{display:contents}
+    .fit-cell{
+      padding:21px 24px;
+      border-bottom:1px solid var(--line);
+    }
+    .fit-row:last-child .fit-cell{border-bottom:0}
+    .fit-cell:nth-child(odd){
+      color:#cceafa;
+      font-weight:800;
+      background:rgba(100,214,255,.035);
+    }
+    .fit-cell:nth-child(even){color:#b8c8d8}
+
+    .project{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:18px;
+      margin-bottom:18px;
+    }
+    .project-side{
+      position:relative;
+      overflow:hidden;
+      min-height:320px;
+      padding:28px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 80% 0%, rgba(100,214,255,.18), transparent 34%),
+        linear-gradient(145deg, #102941, #0b1b2c);
+    }
+    .project-no{
+      font-size:64px; font-weight:900; line-height:1;
+      color:rgba(255,255,255,.08);
+    }
+    .project-side h3{font-size:27px; line-height:1.25; margin:54px 0 12px}
+    .project-side p{color:var(--muted); margin:0}
+    .project-main{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      padding:30px;
+      background:rgba(15,32,52,.72);
+    }
+    .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px}
+    .tag{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#bfd0df;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px; font-weight:700;
+    }
+    .project-main h4{margin:22px 0 8px; font-size:15px; color:#e7f3ff}
+    .project-main ul{margin:0; padding-left:20px; color:#aebfd0}
+    .project-main li{margin:6px 0}
+    .result{
+      margin-top:22px;
+      border-left:3px solid var(--good);
+      padding:14px 16px;
+      background:rgba(141,240,189,.055);
+      border-radius:0 14px 14px 0;
+      color:#d9f9e8;
+    }
+
+    .skill-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+    }
+    .skill-card h3{display:flex; align-items:center; gap:10px}
+    .dot{
+      width:9px; height:9px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 14px rgba(100,214,255,.7);
+    }
+    .skill-list{
+      display:flex; flex-wrap:wrap; gap:9px;
+      margin-top:15px;
+    }
+    .skill-pill{
+      padding:9px 11px;
+      border-radius:11px;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      color:#c6d3df;
+      font-size:13px;
+    }
+
+    .statement{
+      padding:38px;
+      border-radius:28px;
+      border:1px solid rgba(100,214,255,.22);
+      background:
+        linear-gradient(135deg, rgba(100,214,255,.08), rgba(125,140,255,.07)),
+        rgba(15,32,52,.82);
+    }
+    .statement strong{color:white}
+    .statement p{
+      font-size:clamp(20px, 3vw, 30px);
+      line-height:1.55; letter-spacing:-.035em;
+      margin:0;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .contact-box{
+      min-height:180px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .contact-box .label{font-size:12px; color:var(--accent); font-weight:800; letter-spacing:.12em}
+    .contact-box .value{font-size:22px; font-weight:800; margin-top:8px}
+    .edit-hint{color:var(--muted); font-size:13px}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 36px;
+      color:#7f95aa;
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:62px}
+      .wafer-card{min-height:360px}
+      .grid-3{grid-template-columns:1fr}
+      .project{grid-template-columns:1fr}
+      .project-side{min-height:250px}
+      .project-side h3{margin-top:30px}
+      .skill-grid{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .section-head{align-items:flex-start; flex-direction:column}
+    }
+
+    @media (max-width: 680px){
+      .wrap{width:min(var(--max), calc(100% - 28px))}
+      .nav-links{display:none}
+      h1{font-size:46px}
+      .hero p{font-size:17px}
+      .fit-table{grid-template-columns:1fr}
+      .fit-row{display:block}
+      .fit-cell{border-bottom:0}
+      .fit-row .fit-cell:last-child{border-bottom:1px solid var(--line)}
+      .project-main, .project-side, .card{padding:22px}
+    }
+
+    @media print{
+      .nav, .hero-actions{display:none !important}
+      body{background:#fff; color:#111}
+      .hero{min-height:auto; padding-top:30px}
+      .card, .project-main, .project-side, .statement, .fit-table{
+        box-shadow:none;
+        break-inside:avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark"></span> HAEJIN · PROCESS ENGINEER</a>
+      <div class="nav-links">
+        <a href="#fit">직무 적합성</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#skills">역량</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">SEMICONDUCTOR PROCESS TECHNOLOGY PORTFOLIO</span>
+        <h1>
+          공정을 <span class="gradient">데이터로 읽고</span><br/>
+          원인을 끝까지 찾는<br/>
+          공정기술 엔지니어
+        </h1>
+        <p>
+          소재 합성·공정 최적화 연구와 반도체 공정 데이터 분석 경험을 바탕으로,
+          공정 조건–계측 결과–수율의 연결고리를 찾고 재현 가능한 개선안으로 만드는 엔지니어를 지향합니다.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">프로젝트 보기 →</a>
+          <button class="btn" onclick="window.print()">PDF로 저장 / 인쇄</button>
+        </div>
+      </div>
+
+      <div class="wafer-card" aria-label="반도체 웨이퍼를 형상화한 그래픽">
+        <div class="wafer"></div>
+        <div class="wafer-label">
+          <span>PROCESS × DATA × MATERIALS</span>
+          <span>PORTFOLIO / 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">PROFILE</div>
+            <h2>공정기술에 필요한 세 가지 축</h2>
+          </div>
+          <p class="section-note">
+            공정 변수를 직접 다뤄본 연구 경험, 계측 데이터 해석 능력, 그리고 여러 공정 데이터를 연결해 원인을 좁히는 분석 역량을 강점으로 정리했습니다.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="metric">+75% <small>uniformity</small></div>
+            <h3>공정 조건 최적화</h3>
+            <p>c-ALD 기반 성장 조건을 조정하며 두께와 균일도 변화를 추적하고, 목표 구조 형성을 위한 공정 조건을 최적화했습니다.</p>
+          </article>
+          <article class="card">
+            <div class="metric">5 <small>data domains</small></div>
+            <h3>공정 데이터 연결</h3>
+            <p>Yield, ET, CD, Thickness, FDC 데이터를 전처리·연결하여 저수율 Lot과 공정 변수의 상관성을 탐색했습니다.</p>
+          </article>
+          <article class="card">
+            <div class="metric">S0–S4 <small>controlled series</small></div>
+            <h3>변수 설계와 검증</h3>
+            <p>리간드 조성을 단계적으로 변화시킨 샘플군을 설계하고, 구조·광학·분산 특성 데이터를 함께 비교해 원인 변수를 검증했습니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">JOB FIT</div>
+            <h2>공정기술 직무와의 연결</h2>
+          </div>
+          <p class="section-note">
+            “무엇을 해봤는가”보다 “현장에서 어떤 방식으로 문제를 풀 수 있는가”가 드러나도록 경험을 직무 언어로 변환했습니다.
+          </p>
+        </div>
+
+        <div class="fit-table">
+          <div class="fit-row">
+            <div class="fit-cell">공정 조건 관리</div>
+            <div class="fit-cell">합성·성장 공정의 온도, 농도, 조성, 시간 등 주요 변수를 통제하고 결과 특성과 연결한 경험</div>
+          </div>
+          <div class="fit-row">
+            <div class="fit-cell">계측 및 이상 원인 분석</div>
+            <div class="fit-cell">TEM, SEM, XRD, FTIR, PL, UV–Vis, DLS 등 다중 분석 결과를 교차 검증하여 변화 원인을 좁힌 경험</div>
+          </div>
+          <div class="fit-row">
+            <div class="fit-cell">수율·품질 데이터 분석</div>
+            <div class="fit-cell">Python, R, Spotfire, Excel을 활용해 Lot/Wafer 단위 데이터 정리, 트렌드 분석, 상관성 분석을 수행한 경험</div>
+          </div>
+          <div class="fit-row">
+            <div class="fit-cell">DOE / 공정 최적화 사고</div>
+            <div class="fit-cell">한 번에 하나의 핵심 변수를 체계적으로 변화시키고 동일 조건에서 비교하여 영향도를 확인하는 실험 설계 경험</div>
+          </div>
+          <div class="fit-row">
+            <div class="fit-cell">현장형 문제 해결</div>
+            <div class="fit-cell">현상 → 데이터 확인 → 가설 설정 → 추가 측정 → 원인 분리 → 조건 수정의 순서로 문제를 해결하는 습관</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">SELECTED PROJECTS</div>
+            <h2>직무 역량을 증명하는 프로젝트</h2>
+          </div>
+          <p class="section-note">
+            연구 성과 자체보다 공정기술자가 현장에서 사용하는 문제 해결 방식과 연결해 정리했습니다.
+          </p>
+        </div>
+
+        <article class="project">
+          <div class="project-side">
+            <div class="project-no">01</div>
+            <h3>c-ALD 성장 공정 최적화</h3>
+            <p>목표 두께와 균일도를 확보하기 위한 공정 조건 개선</p>
+          </div>
+          <div class="project-main">
+            <div class="tag-row">
+              <span class="tag">Process Optimization</span>
+              <span class="tag">c-ALD</span>
+              <span class="tag">Uniformity</span>
+              <span class="tag">Metrology</span>
+            </div>
+
+            <h4>문제</h4>
+            <ul>
+              <li>얇은 CdSe 나노플레이트 성장 과정에서 목표 구조와 균일도를 동시에 확보해야 했습니다.</li>
+              <li>공정 조건 변화가 두께·형상·광학 특성에 미치는 영향을 분리해서 확인할 필요가 있었습니다.</li>
+            </ul>
+
+            <h4>접근</h4>
+            <ul>
+              <li>성장 단계와 반응 조건을 나누어 관리하고, 조건 변화 전후의 구조 및 광학 데이터를 동일 기준으로 비교했습니다.</li>
+              <li>TEM 및 분광 분석 결과를 함께 활용해 단일 지표에 의존하지 않고 공정 결과를 검증했습니다.</li>
+            </ul>
+
+            <div class="result"><strong>RESULT</strong> · 4 ML → 6 ML 성장 과정에서 공정 조건을 최적화하여 균일도를 약 75% 향상시킨 경험을 확보했습니다.</div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-side">
+            <div class="project-no">02</div>
+            <h3>Ligand-shell Engineering</h3>
+            <p>표면 조성과 분산 안정성의 상관관계 규명</p>
+          </div>
+          <div class="project-main">
+            <div class="tag-row">
+              <span class="tag">DOE</span>
+              <span class="tag">Root Cause</span>
+              <span class="tag">Surface Chemistry</span>
+              <span class="tag">Characterization</span>
+            </div>
+
+            <h4>문제</h4>
+            <ul>
+              <li>나노플레이트 응집으로 복합재 균일성이 저하되는 현상을 개선해야 했습니다.</li>
+              <li>표면 리간드 조성과 입자 간 상호작용의 관계를 정량적으로 확인해야 했습니다.</li>
+            </ul>
+
+            <h4>접근</h4>
+            <ul>
+              <li>Oleate/acetate 조성을 단계적으로 변화시킨 S0–S4 샘플군을 설계하여 다른 조건을 최대한 고정했습니다.</li>
+              <li>UV–Vis, PL, DLS, ζ-potential, SAXS 등 여러 측정 결과를 함께 비교해 분산성 변화의 원인을 교차 검증했습니다.</li>
+              <li>실험 결과와 상호작용 포텐셜 계산을 연결하여 관찰된 현상의 물리적 원인을 해석했습니다.</li>
+            </ul>
+
+            <div class="result"><strong>PROCESS TAKEAWAY</strong> · 복잡한 현상을 한 개의 지표로 판단하지 않고, 공정 변수와 여러 계측 결과를 함께 연결해 원인을 좁히는 분석 방식을 체득했습니다.</div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-side">
+            <div class="project-no">03</div>
+            <h3>반도체 공정 데이터 분석</h3>
+            <p>Lot/Wafer 단위 데이터를 연결한 저수율 원인 탐색</p>
+          </div>
+          <div class="project-main">
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">Spotfire</span>
+              <span class="tag">Yield</span>
+              <span class="tag">FDC</span>
+              <span class="tag">Correlation</span>
+            </div>
+
+            <h4>분석 범위</h4>
+            <ul>
+              <li>Yield, ET(DC), ADI/ACI CD, Thickness, FDC 데이터를 전처리하고 공통 Lot/Wafer 기준으로 연결했습니다.</li>
+              <li>저수율 Lot을 기준으로 계측값과 설비·Chamber·공정 Step 이력을 비교했습니다.</li>
+              <li>트렌드, 산점도, 상관계수, p-value 등을 활용해 우선 확인해야 할 원인 후보를 좁혔습니다.</li>
+            </ul>
+
+            <h4>공정기술 관점</h4>
+            <ul>
+              <li>단순히 “상관성이 있다”에서 끝내지 않고 시간 순서, 설비 이력, 공정 Step, 계측 항목을 함께 확인했습니다.</li>
+              <li>데이터 전처리 기준을 통일해 재현 가능한 분석 흐름을 만들고, Lot/Wafer 단위로 원인을 추적했습니다.</li>
+            </ul>
+
+            <div class="result"><strong>PROCESS TAKEAWAY</strong> · 수율 이상을 데이터로 빠르게 감지하고, 관련 공정·설비·계측 데이터를 연결해 원인 후보를 체계적으로 좁히는 분석 역량을 키웠습니다.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">CAPABILITIES</div>
+            <h2>기술 역량</h2>
+          </div>
+          <p class="section-note">
+            공정 이론, 실험·계측, 데이터 분석을 분리하지 않고 하나의 문제 해결 흐름으로 연결할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="skill-grid">
+          <article class="card skill-card">
+            <h3><span class="dot"></span> Semiconductor Process</h3>
+            <p>반도체 제조 공정의 주요 변수와 불량 메커니즘을 공정기술 관점에서 학습했습니다.</p>
+            <div class="skill-list">
+              <span class="skill-pill">Lithography</span>
+              <span class="skill-pill">Etch / RIE / ICP / CCP</span>
+              <span class="skill-pill">CVD / ALD</span>
+              <span class="skill-pill">CMP</span>
+              <span class="skill-pill">Overlay / CD</span>
+              <span class="skill-pill">SPC / DOE</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <h3><span class="dot"></span> Data Analysis</h3>
+            <p>공정 데이터를 정리하고 이상 구간과 변수 간 관계를 시각화·정량화할 수 있습니다.</p>
+            <div class="skill-list">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">R</span>
+              <span class="skill-pill">Spotfire</span>
+              <span class="skill-pill">Excel</span>
+              <span class="skill-pill">Correlation</span>
+              <span class="skill-pill">Regression / VIF</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <h3><span class="dot"></span> Characterization</h3>
+            <p>공정 결과를 구조·표면·광학·분산 특성의 다양한 관점에서 검증해 왔습니다.</p>
+            <div class="skill-list">
+              <span class="skill-pill">TEM / SEM</span>
+              <span class="skill-pill">XRD</span>
+              <span class="skill-pill">FTIR</span>
+              <span class="skill-pill">UV–Vis / PL / TRPL</span>
+              <span class="skill-pill">DLS / ζ-potential</span>
+              <span class="skill-pill">SAXS</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <h3><span class="dot"></span> Qualification</h3>
+            <p>데이터 분석과 품질 문제 해결 역량을 체계적으로 보완해 왔습니다.</p>
+            <div class="skill-list">
+              <span class="skill-pill">ADsP</span>
+              <span class="skill-pill">컴퓨터활용능력 2급</span>
+              <span class="skill-pill">Six Sigma BB 교육</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="statement">
+          <div class="section-kicker">ENGINEERING STATEMENT</div>
+          <p>
+            저는 공정 이상이 발생했을 때 <strong>“어떤 조건이 달랐는지”를 데이터로 확인하고,
+            계측 결과와 공정 이력을 연결해 원인을 좁힌 뒤, 다시 재현 가능한 조건으로 표준화하는 공정기술자</strong>가 되고 싶습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">CONTACT</div>
+            <h2>함께 더 좋은 공정을 만들겠습니다.</h2>
+          </div>
+          <p class="section-note">아래 연락처만 본인 정보로 교체하면 제출용으로 사용할 수 있습니다.</p>
+        </div>
+
+        <div class="contact">
+          <div class="card contact-box">
+            <div>
+              <div class="label">EMAIL</div>
+              <div class="value">your-email@example.com</div>
+            </div>
+            <div class="edit-hint">index.html에서 이 이메일 주소를 본인 주소로 수정하세요.</div>
+          </div>
+          <div class="card contact-box">
+            <div>
+              <div class="label">LINK</div>
+              <div class="value">LinkedIn / GitHub / Notion</div>
+            </div>
+            <div class="edit-hint">보유한 링크가 없다면 이 카드는 삭제해도 좋습니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Haejin · Semiconductor Process Technology Portfolio</div>
+  </footer>
+</body>
+</html>
